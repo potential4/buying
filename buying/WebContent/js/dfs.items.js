@@ -9,9 +9,12 @@ dfs.items = (function() {
 		);
 	};
 	
+	// TODO: ajax timeout
 	_getItems = function(callback) {
+		var category = dfs.util.getCategory();
+		
 		$.ajax({
-			url : 'http://api-dfs-shila.appspot.com/category/perfumes',
+			url : dfs.util.getItemsByCategory + category,
 			dataType : 'jsonp',
 			type : 'GET',
 			jsonp : 'callback',

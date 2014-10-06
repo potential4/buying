@@ -39,13 +39,13 @@ body {
            			<span class="caret"></span>
            		</a>
 				<ul class="dropdown-menu" role="menu">
-					<li><a href="#">cosmetics</a></li>
-					<li><a href="#">perfumes</a></li>
-					<li><a href="#">electronics</a></li>
-					<li><a href="#">foods</a></li>
-					<li><a href="#">fashions</a></li>
-					<li><a href="#">jewels</a></li>
-					<li><a href="#">domestics</a></li>
+					<li><a href="/items/cosmetics.dfs">cosmetics</a></li>
+					<li><a href="/items/perfumes.dfs">perfumes</a></li>
+					<li><a href="/items/electronics.dfs">electronics</a></li>
+					<li><a href="/items/foods.dfs">foods</a></li>
+					<li><a href="/items/fashions.dfs">fashions</a></li>
+					<li><a href="/items/jewels.dfs">jewels</a></li>
+					<li><a href="/items/domestics.dfs">domestics</a></li>
 			    </ul>
            	</li>
            	<li><a href="#about">바잉 리스트</a></li>
@@ -73,6 +73,7 @@ body {
 <script src="/lib/mustache.js"></script>
 
 <script src="/js/dfs.js"></script>
+<script src="/js/dfs.util.js"></script>
 <script src="/js/dfs.items.js"></script>
 
 <!-- Mustache Template -->
@@ -95,6 +96,9 @@ body {
 </script>
 
 <script type="text/javascript">
+	dfs.data = {
+		'category' : '${category}'	
+	};
 	dfs.items.init();
 </script>
 </body>
