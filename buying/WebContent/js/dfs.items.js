@@ -2,11 +2,13 @@ dfs.items = (function() {
 	var exports = { namespace : 'dfs.items' };
 	
 	exports.init = function() {
+//		dfs.login.initFacebook();
 		var items = _getItems(
 			function(items) {
 				_initView(items);
 			}
 		);
+		dfs.login.checkLoginStatus();
 	};
 	
 	// TODO: ajax timeout
@@ -14,7 +16,7 @@ dfs.items = (function() {
 		var category = dfs.util.getCategory();
 		
 		$.ajax({
-			url : dfs.util.getItemsByCategory + category,
+			url : dfs.urls.getItemsByCategory + category,
 			dataType : 'jsonp',
 			type : 'GET',
 			jsonp : 'callback',

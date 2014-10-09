@@ -19,6 +19,25 @@ body {
 </style>
 
 <body>
+	<!-- Initialize Facebook SDK -->
+	<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '1522185564694957',
+	      xfbml      : true,
+	      version    : 'v2.1'
+	    });
+	  };
+	
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>
+	
 	<!-- Navigation Bar -->
    	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
      <div class="container">
@@ -50,6 +69,14 @@ body {
            	</li>
            	<li><a href="#about">바잉 리스트</a></li>
            	<li><a href="#contact">마이 페이지</a></li>
+           	<li>
+           		<div
+				  class="fb-like"
+				  data-share="true"
+				  data-width="450"
+				  data-show-faces="true">
+				</div>
+           	</li>
            	<li>검색</li>
          </ul>
        </div><!--/.nav-collapse -->
@@ -74,6 +101,7 @@ body {
 
 <script src="/js/dfs.js"></script>
 <script src="/js/dfs.util.js"></script>
+<script src="/js/dfs.login.js"></script>
 <script src="/js/dfs.items.js"></script>
 
 <!-- Mustache Template -->
