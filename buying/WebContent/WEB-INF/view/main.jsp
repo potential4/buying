@@ -11,33 +11,54 @@
 <style type="text/css">
 body {
 	padding-top: 50px;
+	font-family: 나눔고딕, NanumGothic, 맑은 고딕, Malgun Gothic, 돋움, Dotum, 굴림, Gulim, Helvetica, sans-serif;
 }
 
 .starter-template {
   padding: 40px 15px;
 }
+
+.buying-pd-reset {
+	padding: 0 0 0 0;
+}
+
+.buying-item {
+	margin-bottom: 15px;
+	border: 1px solid #dfdfdf;
+}
+.buying-item .buying-thumb {
+	border: 1px solid #e3e3e3;
+}
+.buying-item .buying-thumb img{
+	width: 100%;
+}
+.buying-detail {
+ 	box-sizing: border-box;
+	padding-left: 15px;
+}
+.buying-item .buying-brand {
+	font-weight: bold;
+	font-size: 16px;
+	color: #2f2f2f;
+}
+.buying-item .buying-name {
+	padding-right: 15px;
+	font-size: 14px;
+	color: #005aff;
+}
+.buying-item .buying-price .buying-us-dollar {
+	font-size: 24px;
+	font-weight: bold;
+	color: #c73c00;
+}
+.buying-item .buying-price .buying-won {
+	font-size: 16px;
+	color: #797979;
+}
+
 </style>
 
 <body>
-	<!-- Initialize Facebook SDK -->
-	<script>
-	  window.fbAsyncInit = function() {
-	    FB.init({
-	      appId      : '1522185564694957',
-	      xfbml      : true,
-	      version    : 'v2.1'
-	    });
-	  };
-	
-	  (function(d, s, id){
-	     var js, fjs = d.getElementsByTagName(s)[0];
-	     if (d.getElementById(id)) {return;}
-	     js = d.createElement(s); js.id = id;
-	     js.src = "//connect.facebook.net/en_US/sdk.js";
-	     fjs.parentNode.insertBefore(js, fjs);
-	   }(document, 'script', 'facebook-jssdk'));
-	</script>
-	
 	<!-- Navigation Bar -->
    	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
      <div class="container">
@@ -70,14 +91,12 @@ body {
            	<li><a href="#about">바잉 리스트</a></li>
            	<li><a href="#contact">마이 페이지</a></li>
            	<li>
-           		<div
-				  class="fb-like"
-				  data-share="true"
-				  data-width="450"
-				  data-show-faces="true">
-				</div>
+           		<div class="fb-login-button"
+           			data-max-rows="1"
+           			data-size="large"
+           			data-show-faces="false"
+           			data-auto-logout-link="true"></div>
            	</li>
-           	<li>검색</li>
          </ul>
        </div><!--/.nav-collapse -->
      </div>
@@ -88,8 +107,8 @@ body {
 	<div class="container">
      <div class="starter-template">
        <div class="row">
-       	<div class="col-md-4 _col_first"></div>
-       	<div class="col-md-4 _col_second"></div>
+       	<div class="col-md-4 _col_first" style="padding-right:0px;"></div>
+       	<div class="col-md-4 _col_second" style="padding-right:0px;"></div>
        	<div class="col-md-4 _col_third"></div>
        </div>
      </div>
@@ -106,17 +125,22 @@ body {
 
 <!-- Mustache Template -->
 <script id="tmp_item" type="x-tmpl-mustache">
-<div class="panel panel-default">
+<div class="panel panel-default buying-item">
 	<div class="panel-body">
-		<div class="col-lg-3">
-    		<img src="{{thumbnailUrl}}" style="width:40px; height:40px;">
+		<div class="col-lg-5 buying-thumb buying-pd-reset">
+    		<img src="{{thumbnailUrl}}">
     	</div>
-    	<div class="col-lg-9">
-	    	<div class="row">
-				<a href="{{detailUrl}}">[{{brand}}] {{name}}</a>
+    	<div class="col-lg-7 buying-detail buying-pd-reset">
+	    	<div>
+				<a href="{{detailUrl}}">
+					<div class="buying-brand">{{brand}}</div>
+					<div class="buying-name">{{name}}</div>
+				</a>
 	    	</div>
-	    	<div class="row">
-	    	$ {{dollar}} ({{won}}원)
+	    	<div class="buying-price">
+				<span class="buying-us-dollar">$</span>
+				<span class="buying-us-dollar">{{dollar}}</span>
+				<span class="buying-won"> ({{won}}원)</span>
 			</div>
     	</div>
 	</div>

@@ -2,13 +2,15 @@ dfs.items = (function() {
 	var exports = { namespace : 'dfs.items' };
 	
 	exports.init = function() {
-//		dfs.login.initFacebook();
+		dfs.login.initFacebook();
+		
 		var items = _getItems(
 			function(items) {
 				_initView(items);
 			}
 		);
-		dfs.login.checkLoginStatus();
+		
+		dfs.login.getLoginStatus();
 	};
 	
 	// TODO: ajax timeout
@@ -22,9 +24,10 @@ dfs.items = (function() {
 			jsonp : 'callback',
 			crossDomain : true,
 			contentType : 'application/json; charset=utf-8',
+			timeout : 1000,
 			data : {
 				'from' : 1,
-				'to' : 10
+				'to' : 5
 			},
 			success : function(data, textStatus, jqXHR) {
 				_initView(data);
