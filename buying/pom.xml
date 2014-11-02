@@ -26,10 +26,15 @@
         <artifactId>spring-webmvc</artifactId>  
         <version>${spring.version}</version>  
      </dependency>
+     <dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-jaxrs</artifactId>
+		<version>1.5.2</version>
+	</dependency>
   </dependencies>
   
   <build>
-    <sourceDirectory>src</sourceDirectory>
+    <!-- <sourceDirectory>src</sourceDirectory> -->
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>

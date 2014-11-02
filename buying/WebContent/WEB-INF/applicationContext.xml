@@ -11,9 +11,6 @@
 	<task:annotation-driven />
 	
 	<context:annotation-config />
-	<context:component-scan base-package="com.p4.buying">
-		<!--  <context:exclude-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" /> -->
-	</context:component-scan>
+	<context:component-scan base-package="com.p4.buying"></context:component-scan>
 
 </beans>

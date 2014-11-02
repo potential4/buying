@@ -1,45 +1,31 @@
 dfs.login = (function() {
 	var exports = { namespace : 'dfs.login' };
 	
-	var isLoaded
-		, FBobj;
+	var isLoaded,
+		userData = {};
 	
-	exports.initFacebook = function() {
-		_downloadSDKAsync();
+	exports.login = function() {
+		FB.login(
+			function(response) {
+				// TODO: status check
+				console.log(response);
+				FB.api('/me', function(response) {
+				    console.log(JSON.stringify(response));
+				});
+				
+				FB.api('/me/picture', function(response) {
+				    console.log(JSON.stringify(response));
+				});
+		}, {scope: 'public_profile'});
 	};
 	
-	exports.getLoginStatus = function() {
-		var isSDKAvailable = _waitSDKDownload(function() {
-			FB.getLoginStatus(function(response) {
-				_getLoginStatusCallback(response);
-			});
-		});
-	};
-	
-	var _waitSDKDownload = function(getLoginStatus) {
-		var waitTimer = setInterval(function() {
-			if (isLoaded) {
-				clearInterval(waitTimer);
-				getLoginStatus();
-				return true;
-			}
-		}, 100);
-		// TODO: max count
-		return false;
-	};
-	
-	var _getLoginStatusCallback = function(response) {
-		console.log(response);
-	};
-	
-	var _downloadSDKAsync = function() {
+	exports.downloadSDKAsync = function() {
 		window.fbAsyncInit = function() {
 		    FB.init({
 		      appId      : '1522185564694957',
 		      xfbml      : true,
 		      version    : 'v2.1'
 		    });
-		    isLoaded = true;
 		  };
 		
 		  (function(d, s, id){
@@ -53,6 +39,19 @@ dfs.login = (function() {
 		     js.src = "//connect.facebook.net/en_US/sdk.js";
 		     fjs.parentNode.insertBefore(js, fjs);
 		   }(document, 'script', 'facebook-jssdk'));
+	};
+	
+	var getLoginStatus = function() {
+		FB.getLoginStatus(function(response) {
+			getLoginStatusCallback(response);
+		});
+		FB.api('/me', function(response) {
+		    console.log(JSON.stringify(response));
+		});
+	};
+
+	var getLoginStatusCallback = function(response) {
+		console.log(response);
 	};
 	
 	return exports;
